@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classification</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand" href="/">Classification & Decoding</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Upload  -->
+
+
+
+
+<div class="container pb-4 mb-4">
+    <div class="row pt-4 pb-4">
+        <div class="col-md-7">
+            <div class="card h-100">
+                <div class="card-header">
+                    Feature Space
+                </div>
+                <div class="card-body">
+                    <div class="h-100">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card h-80">
+                <div class="card-header">
+                    Images
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 p-1">
+                            <div class="card">
+                                <div class="card-header">Upload Image</div>
+                                <div class="card-body">
+                                  <form id="file-upload-form" class="uploader">
+                                  <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+
+                                  <label for="file-upload" id="file-drag">
+                                    <img id="file-image" src="#" alt="Preview" class="hidden">
+                                    <div id="start">
+                                      <i class="fa fa-download" aria-hidden="true"></i>
+                                      <div>Select a file or drag here</div>
+                                      <div id="notimage" class="hidden">Please select an image</div>
+                                      <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                                    </div>
+                                    <div id="response" class="hidden">
+                                      <div id="messages"></div>
+                                      <progress class="progress" id="file-progress" value="0">
+                                        <span>0</span>%
+                                      </progress>
+                                    </div>
+                                  </label>
+                                  <button id="submit" class="btn btn-primary">Submit</button>
+                                  </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 p-1">
+                            <div class="card">
+                                <div class="card-header">Original</div>
+                                <div class="card-body">
+                                    <img id="img-original" src="" class="img">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-6 p-1">
+                            <div class="card">
+                                <div class="card-header">Reconstructed</div>
+                                <div class="card-body">
+                                    <img id="img-reconstructed" src="" class="img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row pt-4 pb-4">
+        <div class="col-3">
+            <div id="selected" class="card h-100">
+                <div class="card-header">
+                    Selected Features
+                </div>
+                <div id="selectedFeatures" class="card-body">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div class="card h-100">
+                <div class="card-header">
+                    Ordered Features
+                </div>
+                <div id="features" class="card-body">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row pt-2 pb-2">
+      <div class="col-12">
+          <div class="card h-100">
+              <div class="card-header">
+                  Classification
+              </div>
+              <table id="prediction" class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">0</th>
+                    <th scope="col">1</th>
+                    <th scope="col">2</th>
+                    <th scope="col">3</th>
+                    <th scope="col">4</th>
+                    <th scope="col">5</th>
+                    <th scope="col">6</th>
+                    <th scope="col">7</th>
+                    <th scope="col">8</th>
+                    <th scope="col">9</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+          </div>
+      </div>
+
+    </div>
+
+</div>
+<script src="script.js"></script>
+<script src="upload.js"></script>
+</body>
+</html>
